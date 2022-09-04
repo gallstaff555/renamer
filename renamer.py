@@ -1,5 +1,6 @@
 import os
 import argparse
+from util.file_filter import FileFilter
 
 def get_arguments():
     parser = argparse.ArgumentParser();
@@ -11,8 +12,8 @@ def get_arguments():
 def get_files_in_dir(path):
     return os.listdir(path)
 
-def get_target_dir(args):
-    target_dir = str(args.path)[2:-2] #strip [' and ']
+def get_target_dir(path):
+    target_dir = str(path)[2:-2] #strip [' and ']
     if (target_dir[-1] != '/'):
         target_dir += '/'
     return target_dir
@@ -23,19 +24,11 @@ def rename_file(path, src, dst):
 if __name__ == "__main__":
 
     args = get_arguments()
-    target_dir = get_target_dir(args)
+    target_dir = get_target_dir(args.path)
 
     print(f"Beginning file renaming in {target_dir}...")
     print(f"Files to be renamed: {get_files_in_dir(target_dir)}")
 
     rename_file(target_dir, 'test', 'test2')
 
-
-#input parameters:
-### target directory
-### rename rule 
-### make backup of files
-### help
-
-#get list of all files in target directory
-#iterate through each file and apply rename rule to each file
+    my_formatter = FileFilter()
