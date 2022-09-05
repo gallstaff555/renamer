@@ -1,6 +1,7 @@
 import os
+import re
 import argparse
-from util.file_filter import FileFilter
+from util.file_util import FileUtil
 
 def get_arguments():
     parser = argparse.ArgumentParser();
@@ -25,10 +26,21 @@ if __name__ == "__main__":
 
     args = get_arguments()
     target_dir = get_target_dir(args.path)
+    list_of_files = get_files_in_dir(target_dir)
 
     print(f"Beginning file renaming in {target_dir}...")
-    print(f"Files to be renamed: {get_files_in_dir(target_dir)}")
+    print(f"Files to be renamed: {list_of_files}")
 
-    rename_file(target_dir, 'test', 'test2')
+    #rename_file(target_dir, 'test', 'test2')
 
-    my_formatter = FileFilter()
+    my_file_util = FileUtil(list_of_files);
+    filtered_files = my_file_util.filter_files("");
+
+    for file in filtered_files:
+        #print(type(file))
+        dest = file + "hey"
+        rename_file(target_dir, file, file + "hey")
+
+    #print(str(my_filter.filter_files("")));
+
+
