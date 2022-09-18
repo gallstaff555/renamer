@@ -33,14 +33,19 @@ if __name__ == "__main__":
 
     #rename_file(target_dir, 'test', 'test2')
 
-    my_file_util = FileUtil(list_of_files);
-    filtered_files = my_file_util.filter_files("");
+    my_file_util = FileUtil();
+    filtered_files = my_file_util.filter_files_by_prefix(list_of_files, "asd");
+
+    #postfix_removed_files = my_file_util.remove_postfix(filtered_files, re.search())
+
 
     for file in filtered_files:
         #print(type(file))
         dest = file + "hey"
         rename_file(target_dir, file, file + "hey")
 
+
+    print(get_files_in_dir(get_target_dir(args.path)))
     #print(str(my_filter.filter_files("")));
 
 

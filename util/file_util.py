@@ -8,7 +8,7 @@ from tabnanny import check
 class FileUtil():
 
     #return a list of file names that start with given prefix
-    def filter_files(file_list, prefix):
+    def filter_files_by_prefix(self, file_list, prefix):
         return list(filter(lambda x: (x.startswith(prefix)), file_list))
     
 
@@ -47,7 +47,6 @@ class FileUtil():
         print(str(remove_trailing_digits("hello")))
         print(str(remove_trailing_digits("hello1234")))
 
-        print
 
         # list = ['the', 'quick1', 'brown23', 'fox456']
         # regex = "r'\d+$'"
